@@ -1,11 +1,87 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catálogo de Produtos</title>
+    <link rel="stylesheet" href="./src/css/styles.css">
 </head>
+
 <body>
+    <header>
+        <img src="" alt="Logo">
+
+        <form role="search">
+            <input type="search" placeholder="Buscar produtos...">
+        </form>
+
+        <div class="sort-container">
+            <span>Ordenar por</span>
+            <select name="sort">
+                <option value="menor-preco">Menor Preço</option>
+                <option value="maior-preco">Maior Preço</option>
+            </select>
+        </div>
+    </header>
+
+    <main>
+        <aside>
+            <nav aria-label="Categorias">
+                <h2>Categorias</h2>
+                <ul>
+                    <li><a href="#">Todos os produtos</a></li>
+                    <li><a href="#">Beleza</a></li>
+                    <li><a href="#">Fragrâncias</a></li>
+                    <li><a href="#">Móveis</a></li>
+                    <li><a href="#">Mercado</a></li>
+                    <li><a href="#">Decoração para Casa</a></li>
+                    <li><a href="#">Acessórios de Cozinha</a></li>
+                    <li><a href="#">Notebooks</a></li>
+                    <li><a href="#">Camisas Masculinas</a></li>
+                    <li><a href="#">Calçados Masculinos</a></li>
+                    <li><a href="#">Relógios Masculinos</a></li>
+                    <li><a href="#">Acessórios para Celular</a></li>
+                    <li><a href="#">Motos</a></li>
+                    <li><a href="#">Cuidados com a Pele</a></li>
+                    <li><a href="#">Smartphones</a></li>
+                    <li><a href="#">Acessórios Esportivos</a></li>
+                    <li><a href="#">Óculos de Sol</a></li>
+                    <li><a href="#">Tablets</a></li>
+                    <li><a href="#">Blusas</a></li>
+                    <li><a href="#">Veículos</a></li>
+                    <li><a href="#">Bolsas Femininas</a></li>
+                    <li><a href="#">Vestidos Femininos</a></li>
+                    <li><a href="#">Joias Femininas</a></li>
+                    <li><a href="#">Calçados Femininos</a></li>
+                    <li><a href="#">Relógios Femininos</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <section class="catalog">
+            <h2>Produtos</h2>
+
+            <article class="product-card">
+                <img src="mochila.jpg" alt="Mochila Explorer">
+                <h3>Mochila Explorer</h3>
+                <p class="rating">★★★★★ (23)</p>
+                <p class="description">Mochila resistente...</p>
+                <p class="price">R$ 252,35</p>
+            </article>
+
+            <nav class="pagination" aria-label="Paginação do catálogo">
+                <p>Mostrando 1-8 de 24 produtos</p>
+                <ul>
+                    <li><button>1</button></li>
+                    <li><button>2</button></li>
+                    <li><button>3</button></li>
+                    <li><button>&gt;</button></li>
+                </ul>
+            </nav>
+        </section>
+    </main>
     <script type="module" src="/src/js/main.js"></script>
 </body>
+
 </html>
