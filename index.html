@@ -9,74 +9,189 @@
 </head>
 
 <body>
-    <header>
-        <img src="" alt="Logo">
+    <header class="header">
+        <img class="header__logo" src="" alt="Logo">
 
-        <form role="search">
-            <input type="search" placeholder="Buscar produtos...">
+        <form class="header__search" role="search">
+            <input class="header__search-input" type="search" placeholder="Buscar produtos..." aria-label="Buscar produtos">
         </form>
-
-        <div class="sort-container">
-            <span>Ordenar por</span>
-            <select name="sort">
-                <option value="menor-preco">Menor Preço</option>
-                <option value="maior-preco">Maior Preço</option>
-            </select>
-        </div>
     </header>
 
     <main>
-        <aside>
+        <aside class="sidebar">
             <nav aria-label="Categorias">
-                <h2>Categorias</h2>
-                <ul>
-                    <li><a href="#">Todos os produtos</a></li>
-                    <li><a href="#">Beleza</a></li>
-                    <li><a href="#">Fragrâncias</a></li>
-                    <li><a href="#">Móveis</a></li>
-                    <li><a href="#">Mercado</a></li>
-                    <li><a href="#">Decoração para Casa</a></li>
-                    <li><a href="#">Acessórios de Cozinha</a></li>
-                    <li><a href="#">Notebooks</a></li>
-                    <li><a href="#">Camisas Masculinas</a></li>
-                    <li><a href="#">Calçados Masculinos</a></li>
-                    <li><a href="#">Relógios Masculinos</a></li>
-                    <li><a href="#">Acessórios para Celular</a></li>
-                    <li><a href="#">Motos</a></li>
-                    <li><a href="#">Cuidados com a Pele</a></li>
-                    <li><a href="#">Smartphones</a></li>
-                    <li><a href="#">Acessórios Esportivos</a></li>
-                    <li><a href="#">Óculos de Sol</a></li>
-                    <li><a href="#">Tablets</a></li>
-                    <li><a href="#">Blusas</a></li>
-                    <li><a href="#">Veículos</a></li>
-                    <li><a href="#">Bolsas Femininas</a></li>
-                    <li><a href="#">Vestidos Femininos</a></li>
-                    <li><a href="#">Joias Femininas</a></li>
-                    <li><a href="#">Calçados Femininos</a></li>
-                    <li><a href="#">Relógios Femininos</a></li>
+                <h2 class="sidebar__title">Categorias</h2>
+                <ul class="sidebar__list">
+                    <li class="sidebar__item">
+                        <a class="sidebar__link sidebar__link--active" href="#">
+                            Todos os produtos
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__link" href="#">
+                            Beleza
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__link" href="#">
+                            Fragrâncias
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__link" href="#">
+                            Móveis
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__link" href="#">
+                            Mercado
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__link" href="#">
+                            Decoração para Casa
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__link" href="#">
+                            Acessórios de Cozinha
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__link" href="#">
+                            Notebooks
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__link" href="#">
+                            Camisas Masculinas
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__link" href="#">
+                            Calçados Masculinos
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__link" href="#">
+                            Relógios Masculinos
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__link" href="#">
+                            Acessórios para Celular
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__link" href="#">
+                            Motos
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__link" href="#">
+                            Cuidados com a Pele
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__link" href="#">
+                            Smartphones
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__link" href="#">
+                            Acessórios Esportivos
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__link" href="#">
+                            Óculos de Sol
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__link" href="#">
+                            Tablets
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__link" href="#">
+                            Blusas
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__link" href="#">
+                            Veículos
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__link" href="#">
+                            Bolsas Femininas
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__link" href="#">
+                            Vestidos Femininos
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__link" href="#">
+                            Joias Femininas
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__link" href="#">
+                            Calçados Femininos
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a class="sidebar__link" href="#">
+                            Relógios Femininos
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </aside>
 
         <section class="catalog">
-            <h2>Produtos</h2>
+            <div class="catalog__header">
+                <h2 class="catalog__title">Produtos</h2>
 
-            <article class="product-card">
-                <img src="mochila.jpg" alt="Mochila Explorer">
-                <h3>Mochila Explorer</h3>
-                <p class="rating">★★★★★ (23)</p>
-                <p class="description">Mochila resistente...</p>
-                <p class="price">R$ 252,35</p>
-            </article>
+                <div class="catalog__sort">
+                    <label class="catalog__sort-label" for="sort">
+                        Ordenar por
+                    </label>
+
+                    <select class="catalog__sort-select" id="sort" name="sort">
+                        <option value="menor-preco">Menor Preço</option>
+                        <option value="maior-preco">Maior Preço</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="catalog__grid">
+                <article class="product-card">
+                    <img class="product-card__image" src="mochila.jpg" alt="Mochila Explorer">
+                    <h3 class="product-card__title">Mochila Explorer</h3>
+                    <p class="product-card__rating">★★★★★ (23)</p>
+                    <p class="product-card__description">Mochila resistente...</p>
+                    <p class="product-card__price">R$ 252,35</p>
+                </article>
+            </div>
 
             <nav class="pagination" aria-label="Paginação do catálogo">
-                <p>Mostrando 1-8 de 24 produtos</p>
-                <ul>
-                    <li><button>1</button></li>
-                    <li><button>2</button></li>
-                    <li><button>3</button></li>
-                    <li><button>&gt;</button></li>
+                <p class="pagination__info">Mostrando 1-8 de 24 produtos</p>
+                <ul class="pagination__list">
+                    <li class="pagination__item">
+                        <button class="pagination__button pagination__button--active">1</button>
+                    </li>
+                    <li class="pagination__item">
+                        <button class="pagination__button">2</button>
+                    </li>
+                    <li class="pagination__item">
+                        <button class="pagination__button">3</button>
+                    </li>
+                    <li class="pagination__item">
+                        <button class="pagination__button">&gt;</button>
+                    </li>
                 </ul>
             </nav>
         </section>
