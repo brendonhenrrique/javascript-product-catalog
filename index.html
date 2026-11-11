@@ -10,10 +10,14 @@
 
 <body>
     <header class="header">
-        <img class="header__logo" src="" alt="Logo">
+        <h1 class="header__title">Catálogo de Produtos</h1>
 
         <form class="header__search" role="search">
-            <input class="header__search-input" type="search" placeholder="Buscar produtos..." aria-label="Buscar produtos">
+            <input class="header__search-input" type="search" placeholder="🔍 Buscar produtos..."
+                aria-label="Buscar produtos">
+            <button type="submit" class="header__search-button" aria-label="Pesquisar">
+                <img src="./src/assets/icon/search.svg" alt="Icone pesquisar">
+            </button>
         </form>
     </header>
 
@@ -21,7 +25,7 @@
         <aside class="sidebar">
             <nav aria-label="Categorias">
                 <h2 class="sidebar__title">Categorias</h2>
-                <ul class="sidebar__list">
+                <ul class="sidebar__list sidebar__list--collapsed" id="category-list">
                     <li class="sidebar__item">
                         <a class="sidebar__link sidebar__link--active" href="#">
                             Todos os produtos
@@ -148,6 +152,7 @@
                         </a>
                     </li>
                 </ul>
+                <button class="sidebar__toggle-btn" id="toggle-btn">Ver mais</button>
             </nav>
         </aside>
 
@@ -161,6 +166,7 @@
                     </label>
 
                     <select class="catalog__sort-select" id="sort" name="sort">
+                        <option value="meais-relevantes">Mais Relevantes</option>
                         <option value="menor-preco">Menor Preço</option>
                         <option value="maior-preco">Maior Preço</option>
                     </select>
@@ -168,6 +174,62 @@
             </div>
 
             <div class="catalog__grid">
+                <article class="product-card">
+                    <img class="product-card__image" src="mochila.jpg" alt="Mochila Explorer">
+                    <h3 class="product-card__title">Mochila Explorer</h3>
+                    <p class="product-card__rating">★★★★★ (23)</p>
+                    <p class="product-card__description">Mochila resistente...</p>
+                    <p class="product-card__price">R$ 252,35</p>
+                </article>
+
+                <article class="product-card">
+                    <img class="product-card__image" src="mochila.jpg" alt="Mochila Explorer">
+                    <h3 class="product-card__title">Mochila Explorer</h3>
+                    <p class="product-card__rating">★★★★★ (23)</p>
+                    <p class="product-card__description">Mochila resistente...</p>
+                    <p class="product-card__price">R$ 252,35</p>
+                </article>
+
+                <article class="product-card">
+                    <img class="product-card__image" src="mochila.jpg" alt="Mochila Explorer">
+                    <h3 class="product-card__title">Mochila Explorer</h3>
+                    <p class="product-card__rating">★★★★★ (23)</p>
+                    <p class="product-card__description">Mochila resistente...</p>
+                    <p class="product-card__price">R$ 252,35</p>
+                </article>
+
+                <article class="product-card">
+                    <img class="product-card__image" src="mochila.jpg" alt="Mochila Explorer">
+                    <h3 class="product-card__title">Mochila Explorer</h3>
+                    <p class="product-card__rating">★★★★★ (23)</p>
+                    <p class="product-card__description">Mochila resistente...</p>
+                    <p class="product-card__price">R$ 252,35</p>
+                </article>
+
+                <article class="product-card">
+                    <img class="product-card__image" src="mochila.jpg" alt="Mochila Explorer">
+                    <h3 class="product-card__title">Mochila Explorer</h3>
+                    <p class="product-card__rating">★★★★★ (23)</p>
+                    <p class="product-card__description">Mochila resistente...</p>
+                    <p class="product-card__price">R$ 252,35</p>
+                </article>
+
+                <article class="product-card">
+                    <img class="product-card__image" src="mochila.jpg" alt="Mochila Explorer">
+                    <h3 class="product-card__title">Mochila Explorer</h3>
+                    <p class="product-card__rating">★★★★★ (23)</p>
+                    <p class="product-card__description">Mochila resistente...</p>
+                    <p class="product-card__price">R$ 252,35</p>
+                </article>
+
+                <article class="product-card">
+                    <img class="product-card__image" src="mochila.jpg" alt="Mochila Explorer">
+                    <h3 class="product-card__title">Mochila Explorer</h3>
+                    <p class="product-card__rating">★★★★★ (23)</p>
+                    <p class="product-card__description">Mochila resistente...</p>
+                    <p class="product-card__price">R$ 252,35</p>
+                </article>
+
                 <article class="product-card">
                     <img class="product-card__image" src="mochila.jpg" alt="Mochila Explorer">
                     <h3 class="product-card__title">Mochila Explorer</h3>

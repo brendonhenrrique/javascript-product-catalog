@@ -1,0 +1,321 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-primary: #D97706;
+  /* Cor principal de destaque: botões e ações importantes. */
+  --color-heading: #451A03;
+  /* Cor dos títulos, mantendo a identidade visual do projeto. */
+  --color-category-active: #ddbe9a;
+  /* Cor de fundo da categoria atualmente selecionada. */
+  --color-description: #78350F;
+  /* Cor dos textos descritivos dos produtos. */
+  --color-background: #FEFCE8;
+  /* Cor de fundo principal da página. */
+  --color-pagination: rgba(69, 26, 3, 0.7);
+  /* Cor das informações da paginação e do placeholder, com 70% de opacidade. */
+  --color-price: #000000;
+  /* Cor utilizada para destacar os preços dos produtos. */
+  --color-surface: #FFFFFF;
+  /* Cor de superfície dos componentes: header, sidebar e product-card. */
+  --color-input-background: #E5E7EB;
+  /* Cor de fundo do campo de pesquisa. */
+
+  --border-radius-sm: 6px;
+  /* Arredondamento pequeno, para elementos discretos. */
+  --border-radius-md: 10px;
+  /* Arredondamento médio, para componentes e controles. */
+  --border-radius-lg: 16px;
+  /* Arredondamento maior, para cards e áreas de destaque. */
+
+  --shadow-card: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  /* Sombra utilizada para criar profundidade nos componentes. */
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+  background-color: var(--color-background);
+  min-height: 100vh; /* Permite rolar a página */
+  padding: 24px 40px 0; /* Aplica o respiro geral da página no body */
+}
+
+header.header {
+  width: 100%;
+  height: 80px;
+  margin-bottom: 32px;
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  justify-content: space-between; /* Afasta o título da busca */
+  align-items: center;
+  padding: 0 40px; /* Espaçamento interno */
+}
+
+.header__search {
+  width: 70%;
+  position: relative;
+  margin-left: 40px;
+}
+
+.header__search-input {
+  width: 100%;
+  height: 40px;
+
+  border: var(--color-heading) solid 1px;
+  border-radius: var(--border-radius-lg);
+  color: var(--color-heading);
+  font-size: 20px;
+  padding-left: 15px;
+  padding-right: 50px;
+
+  background-color: rgb(206, 205, 205);
+}
+.header__search-input:focus {
+  outline: none;
+  border-color: #9e4c00; /* Um tom um pouco mais escuro para mostrar que está selecionado */
+  box-shadow: 0 0 0 2px rgba(217, 119, 6, 0.247);  
+}
+
+.header__search-input::placeholder {
+  color: var(--color-heading);
+  opacity: 0.5;
+  font-size: 18px
+}
+
+h1,
+h2,
+h3 {
+  color: var(--color-heading);
+}
+
+h1,
+h2  {
+  font-size: 1.875rem;
+}
+
+.catalog__sort-label {
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: var(--color-heading);
+}
+
+a {
+  font-size: 1rem;
+}
+
+.header__search-button {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  /* Reseta os estilos nativos de <button> */
+  border: none;
+  cursor: pointer;
+
+  /* Altere o background do BOTÃO aqui (ex: transparente ou uma cor) */
+  background-color: var(--color-primary); 
+
+  /* Tamanho da área clicável e centralização do ícone */
+  width: 32px;
+  height: 32px;
+  border-radius: 40%; /* Deixa o fundo redondo caso use cor de fundo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+/* Efeito Visual ao Passar o Mouse ou Focar no Botão */
+.header__search-button:hover {
+  background-color: rgb(158, 76, 0); /* Cria um destaque circular sutil */
+  opacity: 0.7;
+}
+
+main {
+  width: 100%;
+  display: flex;
+  align-items: flex-start; /* Evita que a sidebar estique até o final da página */
+  gap: 32px; /* O segredo: delega o espaçamento entre colunas para o pai */
+}
+
+.sidebar {
+  width: 250px; /* Sidebars costumam ter largura fixa no desktop */
+  flex-shrink: 0; /* Impede a sidebar de encolher se os produtos crescerem */
+  padding: 10px;
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.sidebar__title {
+  padding-left: 5px;
+  margin-bottom: 5px;
+}
+
+.sidebar__list {
+  list-style: none;
+}
+
+.sidebar__list--collapsed .sidebar__item:nth-child(n+16) {
+    display: none;
+}
+
+.sidebar__toggle-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    border-radius: var(--border-radius-sm);
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.sidebar__toggle-btn:hover {
+    background-color: var(--color-primary);
+    color: var(--color-surface);
+}
+
+.sidebar__item {
+  width: 100%;
+  margin-bottom: 4px;
+}
+
+.sidebar__link {
+  display: block; /*Transforma o <a> em bloco para pegar todo o espaço da linha*/
+  padding: 12px 16px;
+  border-radius: var(--border-radius-sm);
+  color: var(--color-heading);
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.sidebar__link--active, 
+.sidebar__link:hover {
+  background-color: var(--color-category-active);
+  font-weight: bold;
+}
+
+.catalog {
+  margin-top: 12px; /* para ficar na mesma altura do Categorias*/
+  flex: 1; /* Pega todo o espaço restante da tela, ignorando porcentagens */
+}
+
+.catalog__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: px; /* Afasta o título do grid de produtos */
+}
+
+.catalog__sort-select {
+  border: none;
+  background-color: transparent;
+  font-size: 1rem;
+  color: var(--color-heading);
+  border: 1px solid var(--color-heading);
+  border-radius: var(--border-radius-sm);
+  padding: 5px 5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+}
+.catalog__sort-select:focus {
+  outline: none;
+  border-color: #9e4c00; /* Um tom um pouco mais escuro para mostrar que está selecionado */
+  box-shadow: 0 0 0 2px rgba(217, 119, 6, 0.247); /* Cria um anel de foco mais suave e elegante */
+}
+
+.catalog__sort-select option {
+  background-color: var(--color-surface); /* Fundo clarinho das opções */
+  color: var(--color-heading);
+}
+
+.catalog__grid {
+  width: 100%;
+  display: grid;
+  /* Cria exatas 4 colunas de tamanhos iguais. Se a tela diminuir muito, você pode usar media queries depois. */
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 24px; 
+}
+
+.product-card {
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Essencial para a imagem não quebrar o border-radius */
+  padding-bottom: 16px; /* Respiro no fundo do card */
+}
+
+.product-card__image {
+  width: 100%;
+  height: 220px; /* Tamanho do quadrado cinza do Figma */
+  object-fit: cover; /* Evita que a imagem distorça, ela recorta o excesso */
+  background-color: var(--color-input-background); /* Fundo cinza enquanto a imagem não carrega */
+  margin-bottom: 12px;
+}
+
+.product-card__title,
+.product-card__rating,
+.product-card__description,
+.product-card__price {
+  padding: 0 16px;
+  margin-bottom: 8px;
+}
+
+.product-card__description {
+  color: var(--color-description);
+  font-size: 0.9rem;
+}
+
+.product-card__price {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-top: auto; /* Truque poderoso: empurra o preço sempre pro rodapé do card, mesmo se a descrição for curta */
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  gap: 60px;
+}
+
+.pagination__info {
+  font-size: 18px;
+  color:  var(--color-description);
+}
+
+.pagination__list {
+  display: flex;
+  gap: 10px;
+  list-style: none;
+  /* margin-left: 30px; */
+}
+
+.pagination__button {
+  background-color: var(--color-primary);
+  border: none;
+  font-size: 18px;
+  color: var(--color-surface);
+  border-radius: var(--border-radius-sm);
+  padding: 5px 10px;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+.pagination__button:hover {
+  background-color: rgb(158, 76, 0); /* Cria um destaque circular sutil */
+  opacity: 0.7;
+}
