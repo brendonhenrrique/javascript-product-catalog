@@ -327,3 +327,7 @@ main {
   background-color: rgb(158, 76, 0); /* Cria um destaque circular sutil */
   opacity: 0.7;
 }
+
+.pagination__btn--disabled {
+  display: none;
+}
