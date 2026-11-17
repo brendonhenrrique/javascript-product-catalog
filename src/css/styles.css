@@ -269,20 +269,28 @@ main {
 .product-card__title,
 .product-card__rating,
 .product-card__description,
-.product-card__price {
+.product-card__footer {
   padding: 0 16px;
   margin-bottom: 8px;
 }
 
-.product-card__description {
-  color: var(--color-description);
-  font-size: 0.9rem;
+.product-card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline; 
+  margin-top: auto;      
+  margin-bottom: 0;
 }
 
 .product-card__price {
   font-size: 1.25rem;
   font-weight: bold;
-  margin-top: auto; /* Truque poderoso: empurra o preço sempre pro rodapé do card, mesmo se a descrição for curta */
+}
+
+.product-card__unit {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-description);
 }
 
 .pagination {
