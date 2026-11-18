@@ -1,13 +1,14 @@
-import { buscarProdutos } from "./api.js";
+import { buscarProdutos, buscarPorCategoria } from "./api.js";
 
 const btnStart = document.querySelector('.pagination__button--start');
 const btnPrevious = document.querySelector('.pagination__button--previous');
 const btnNext = document.querySelector('.pagination__button--next');
 const btnEnd = document.querySelector('.pagination__button--end');
+const categoryList = document.getElementById('category-list');
+const grid = document.querySelector('.catalog__grid');
 
 
 export function initSidebarToggle() {
-    const categoryList = document.getElementById('category-list');
     const toggleBtn = document.getElementById('toggle-btn');
 
     if (categoryList && toggleBtn) {
@@ -70,7 +71,8 @@ document.addEventListener('DOMContentLoaded', carregaPagina)
 const estado = {
     paginaAtual: 1,
     limite: 8,
-    total: 0
+    total: 0,
+    categoriaAtual: 'all'
 }
 
 function calcularSkip() {
@@ -82,14 +84,18 @@ function calcularUltimaPagina() {
 }
 
 async function carregaPagina() {
-    const listaProdutos = await buscarProdutos(estado.limite, calcularSkip());
-    const produtos = listaProdutos.products;
-    const grid = document.querySelector('.catalog__grid');
+    let dados;
 
-    estado.total = listaProdutos.total
+    if (estado.categoriaAtual === 'all') {
+        dados = await buscarProdutos(estado.limite, calcularSkip());
+    } else {
+        dados = await buscarPorCategoria(estado.categoriaAtual, estado.limite, calcularSkip());
+    }
+
+    estado.total = dados.total;
     grid.replaceChildren();
 
-    for (const produto of produtos) {
+    for (const produto of dados.products) {
         const card = createCard(produto);
         grid.appendChild(card);
     }
@@ -151,3 +157,19 @@ btnEnd.addEventListener('click', () => {
         carregaPagina();
     }
 })
+
+categoryList.addEventListener('click', (event) => {
+    const botaoCategoria = event.target.closest('.sidebar__button');
+    if (!botaoCategoria) return; // Ignora cliques nos espaços vazios entre os botões
+    
+    const botaoAtivo = document.querySelector('.sidebar__button--active');
+    if (botaoAtivo) {
+        botaoAtivo.classList.remove('sidebar__button--active')
+    }
+
+    botaoCategoria.classList.add('sidebar__button--active')
+
+    estado.categoriaAtual = botaoCategoria.dataset.category;
+    estado.paginaAtual = 1;
+    carregaPagina();
+});

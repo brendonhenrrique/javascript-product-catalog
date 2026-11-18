@@ -162,7 +162,7 @@ main {
   list-style: none;
 }
 
-.sidebar__list--collapsed .sidebar__item:nth-child(n+16) {
+.sidebar__list--collapsed .sidebar__item:nth-child(n+21) {
     display: none;
 }
 
@@ -189,18 +189,23 @@ main {
   margin-bottom: 4px;
 }
 
-.sidebar__link {
-  display: block; /*Transforma o <a> em bloco para pegar todo o espaço da linha*/
+.sidebar__button {
+  display: block;
+  width: 100%; /* Obrigatório: <button> não estica sozinho como o <a> */
   padding: 12px 16px;
+  border: none; /* Remove a borda padrão do navegador */
   border-radius: var(--border-radius-sm);
+  background-color: transparent; /* Remove o fundo cinza padrão */
   color: var(--color-heading);
-  text-decoration: none;
+  font-family: inherit; /* Herda o Arial do body (botões não herdam por padrão) */
+  font-size: 1rem;
   font-weight: 500;
+  text-align: left; /* Alinha o texto à esquerda (botões centralizam por padrão) */
+  cursor: pointer; /* Devolve a mãozinha ao passar o mouse */
   transition: background-color 0.2s ease;
 }
-
-.sidebar__link--active, 
-.sidebar__link:hover {
+.sidebar__button--active, 
+.sidebar__button:hover {
   background-color: var(--color-category-active);
   font-weight: bold;
 }
@@ -214,7 +219,6 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: px; /* Afasta o título do grid de produtos */
 }
 
 .catalog__sort-select {
