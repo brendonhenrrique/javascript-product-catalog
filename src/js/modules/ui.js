@@ -1,4 +1,4 @@
-import { buscarProdutos, buscarPorCategoria } from "./api.js";
+import { buscarProdutos, buscarPorCategoria, buscarPorNome } from "./api.js";
 
 const btnStart = document.querySelector('.pagination__button--start');
 const btnPrevious = document.querySelector('.pagination__button--previous');
@@ -6,6 +6,9 @@ const btnNext = document.querySelector('.pagination__button--next');
 const btnEnd = document.querySelector('.pagination__button--end');
 const categoryList = document.getElementById('category-list');
 const grid = document.querySelector('.catalog__grid');
+const select = document.getElementById('sort');
+const form = document.querySelector('.header__search');
+const input = document.querySelector('.header__search-input')
 
 
 export function initSidebarToggle() {
@@ -74,7 +77,8 @@ const estado = {
     total: 0,
     categoriaAtual: 'all',
     sortBy: '',
-    order: ''
+    order: '',
+    busca: ''
 }
 
 function calcularSkip() {
@@ -88,10 +92,12 @@ function calcularUltimaPagina() {
 async function carregaPagina() {
     let dados;
 
-    if (estado.categoriaAtual === 'all') {
+    if (estado.categoriaAtual === 'all' && estado.busca === '') {
         dados = await buscarProdutos(estado.limite, calcularSkip(), estado.sortBy, estado.order);
-    } else {
+    } else if (estado.categoriaAtual) {
         dados = await buscarPorCategoria(estado.categoriaAtual, estado.limite, calcularSkip(), estado.sortBy, estado.order);
+    } else {
+        dados = await buscarPorNome(estado.busca, estado.limite, calcularSkip(), estado.sortBy, estado.order);
     }
 
     estado.total = dados.total;
@@ -171,12 +177,14 @@ categoryList.addEventListener('click', (event) => {
 
     botaoCategoria.classList.add('sidebar__button--active')
 
+    input.value = ''
+
     estado.categoriaAtual = botaoCategoria.dataset.category;
     estado.paginaAtual = 1;
+    estado.busca = ''
     carregaPagina();
 });
 
-const select = document.getElementById('sort');
 
 select.addEventListener('change', () => {
     const valor = select.value;
@@ -194,4 +202,48 @@ select.addEventListener('change', () => {
 
     estado.paginaAtual = 1;
     carregaPagina();
+});
+
+function voltarParaTodosProdutos() {
+    const botaoAtivo = categoryList.querySelector('.sidebar__button--active');
+    if (botaoAtivo) {
+        botaoAtivo.classList.remove('sidebar__button--active');
+    }
+
+    const botaoTodos = categoryList.querySelector('[data-category="all"]');
+    if (botaoTodos) {
+        botaoTodos.classList.add('sidebar__button--active');
+    }
+
+    estado.busca = '';
+    estado.categoriaAtual = 'all';
+    estado.paginaAtual = 1;
+    carregaPagina();
+}
+
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const inputValue = input.value.trim();
+
+    if (inputValue === '') {
+        voltarParaTodosProdutos();
+        return;
+    }
+
+    const botaoAtivo = categoryList.querySelector('.sidebar__button--active');
+    if (botaoAtivo) {
+        botaoAtivo.classList.remove('sidebar__button--active');
+    }
+
+    estado.busca = inputValue;
+    estado.paginaAtual = 1;
+    estado.categoriaAtual = '';
+
+    carregaPagina();
+});
+
+input.addEventListener('search', () => {
+    if (input.value.trim() === '') {
+        voltarParaTodosProdutos();
+    }
 });
