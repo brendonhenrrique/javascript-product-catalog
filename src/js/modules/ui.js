@@ -72,7 +72,9 @@ const estado = {
     paginaAtual: 1,
     limite: 8,
     total: 0,
-    categoriaAtual: 'all'
+    categoriaAtual: 'all',
+    sortBy: '',
+    order: ''
 }
 
 function calcularSkip() {
@@ -87,9 +89,9 @@ async function carregaPagina() {
     let dados;
 
     if (estado.categoriaAtual === 'all') {
-        dados = await buscarProdutos(estado.limite, calcularSkip());
+        dados = await buscarProdutos(estado.limite, calcularSkip(), estado.sortBy, estado.order);
     } else {
-        dados = await buscarPorCategoria(estado.categoriaAtual, estado.limite, calcularSkip());
+        dados = await buscarPorCategoria(estado.categoriaAtual, estado.limite, calcularSkip(), estado.sortBy, estado.order);
     }
 
     estado.total = dados.total;
@@ -161,7 +163,7 @@ btnEnd.addEventListener('click', () => {
 categoryList.addEventListener('click', (event) => {
     const botaoCategoria = event.target.closest('.sidebar__button');
     if (!botaoCategoria) return; // Ignora cliques nos espaços vazios entre os botões
-    
+
     const botaoAtivo = document.querySelector('.sidebar__button--active');
     if (botaoAtivo) {
         botaoAtivo.classList.remove('sidebar__button--active')
@@ -170,6 +172,26 @@ categoryList.addEventListener('click', (event) => {
     botaoCategoria.classList.add('sidebar__button--active')
 
     estado.categoriaAtual = botaoCategoria.dataset.category;
+    estado.paginaAtual = 1;
+    carregaPagina();
+});
+
+const select = document.getElementById('sort');
+
+select.addEventListener('change', () => {
+    const valor = select.value;
+
+    if (valor === 'price-asc') {
+        estado.sortBy = 'price';
+        estado.order = 'asc';
+    } else if (valor === 'price-desc') {
+        estado.sortBy = 'price';
+        estado.order = 'desc';
+    } else {
+        estado.sortBy = '';
+        estado.order = '';
+    }
+
     estado.paginaAtual = 1;
     carregaPagina();
 });
