@@ -1,3 +1,6 @@
-import { initSidebarToggle } from './modules/ui.js';
+import { initSidebarToggle, initCatalog } from './modules/ui.js';
 
-initSidebarToggle();
+document.addEventListener('DOMContentLoaded', () => {
+  initSidebarToggle();
+  initCatalog();
+});

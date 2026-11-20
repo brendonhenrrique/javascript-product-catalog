@@ -1,41 +1,44 @@
-export async function buscarProdutos(limite, pular, sortBy = '', order = '') {
+const BASE_URL = 'https://dummyjson.com/products';
+const SELECTED_FIELDS = 'title,price,description,thumbnail,rating,stock';
+
+async function fetchFromApi(endpoint, params = {}) {
   try {
-    const url = `https://dummyjson.com/products?limit=${limite}&skip=${pular}&sortBy=${sortBy}&order=${order}&select=title,price,description,thumbnail,rating,stock`
+    const queryParams = new URLSearchParams({
+      ...params,
+      select: SELECTED_FIELDS,
+    });
 
-    const produto = await fetch(url);
-    const json = await produto.json();
+    const response = await fetch(`${BASE_URL}${endpoint}?${queryParams}`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
 
-    return json;
-  } catch (err) {
-    console.log('DEU ERRO: ', err);
+    return await response.json();
+  } catch (error) {
+    console.error('Failed to fetch products:', error);
     return { products: [], total: 0 };
   }
 }
 
-export async function buscarPorCategoria(categoria, limite, pular, sortBy = '', order = '') {
-  try {
-    const url = `https://dummyjson.com/products/category/${categoria}?limit=${limite}&skip=${pular}&sortBy=${sortBy}&order=${order}&select=title,price,description,thumbnail,rating,stock`
-
-    const categorias = await fetch(url);
-    const json = await categorias.json();
-
-    return json;
-  } catch (err) {
-    console.log('DEU ERRO: ', err);
-    return { products: [], total: 0 };
-  }
+export function fetchProducts(limit, skip, sortBy = '', order = '') {
+  return fetchFromApi('', { limit, skip, sortBy, order });
 }
 
-export async function buscarPorNome(nome, limite, pular, sortBy = '', order = '') {
-  try {
-    const url = `https://dummyjson.com/products/search?q=${nome}&limit=${limite}&skip=${pular}&sortBy=${sortBy}&order=${order}&select=title,price,description,thumbnail,rating,stock`
+export function fetchProductsByCategory(category, limit, skip, sortBy = '', order = '') {
+  return fetchFromApi(`/category/${encodeURIComponent(category)}`, {
+    limit,
+    skip,
+    sortBy,
+    order,
+  });
+}
 
-    const categorias = await fetch(url);
-    const json = await categorias.json();
-
-    return json;
-  } catch (err) {
-    console.log('DEU ERRO: ', err);
-    return { products: [], total: 0 };
-  }
+export function searchProductsByName(query, limit, skip, sortBy = '', order = '') {
+  return fetchFromApi('/search', {
+    q: query,
+    limit,
+    skip,
+    sortBy,
+    order,
+  });
 }
