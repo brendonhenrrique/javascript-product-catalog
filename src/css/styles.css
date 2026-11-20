@@ -39,8 +39,10 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.5;
   background-color: var(--color-background);
-  min-height: 100vh; /* Permite rolar a página */
-  padding: 24px 40px 0; /* Aplica o respiro geral da página no body */
+  min-height: 100vh;
+  /* Permite rolar a página */
+  padding: 24px 40px 0;
+  /* Aplica o respiro geral da página no body */
 }
 
 header.header {
@@ -51,9 +53,11 @@ header.header {
   border-radius: var(--border-radius-lg);
   box-shadow: var(--shadow-card);
   display: flex;
-  justify-content: space-between; /* Afasta o título da busca */
+  justify-content: space-between;
+  /* Afasta o título da busca */
   align-items: center;
-  padding: 0 40px; /* Espaçamento interno */
+  padding: 0 40px;
+  /* Espaçamento interno */
 }
 
 .header__search {
@@ -75,10 +79,12 @@ header.header {
 
   background-color: rgb(206, 205, 205);
 }
+
 .header__search-input:focus {
   outline: none;
-  border-color: #9e4c00; /* Um tom um pouco mais escuro para mostrar que está selecionado */
-  box-shadow: 0 0 0 2px rgba(217, 119, 6, 0.247);  
+  border-color: #9e4c00;
+  /* Um tom um pouco mais escuro para mostrar que está selecionado */
+  box-shadow: 0 0 0 2px rgba(217, 119, 6, 0.247);
 }
 
 .header__search-input::placeholder {
@@ -94,7 +100,7 @@ h3 {
 }
 
 h1,
-h2  {
+h2 {
   font-size: 1.875rem;
 }
 
@@ -119,12 +125,13 @@ a {
   cursor: pointer;
 
   /* Altere o background do BOTÃO aqui (ex: transparente ou uma cor) */
-  background-color: var(--color-primary); 
+  background-color: var(--color-primary);
 
   /* Tamanho da área clicável e centralização do ícone */
   width: 32px;
   height: 32px;
-  border-radius: 40%; /* Deixa o fundo redondo caso use cor de fundo */
+  border-radius: 40%;
+  /* Deixa o fundo redondo caso use cor de fundo */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -133,20 +140,25 @@ a {
 
 /* Efeito Visual ao Passar o Mouse ou Focar no Botão */
 .header__search-button:hover {
-  background-color: rgb(158, 76, 0); /* Cria um destaque circular sutil */
+  background-color: rgb(158, 76, 0);
+  /* Cria um destaque circular sutil */
   opacity: 0.7;
 }
 
 main {
   width: 100%;
   display: flex;
-  align-items: flex-start; /* Evita que a sidebar estique até o final da página */
-  gap: 32px; /* O segredo: delega o espaçamento entre colunas para o pai */
+  align-items: flex-start;
+  /* Evita que a sidebar estique até o final da página */
+  gap: 32px;
+  /* O segredo: delega o espaçamento entre colunas para o pai */
 }
 
 .sidebar {
-  width: 250px; /* Sidebars costumam ter largura fixa no desktop */
-  flex-shrink: 0; /* Impede a sidebar de encolher se os produtos crescerem */
+  width: 250px;
+  /* Sidebars costumam ter largura fixa no desktop */
+  flex-shrink: 0;
+  /* Impede a sidebar de encolher se os produtos crescerem */
   padding: 10px;
   background-color: var(--color-surface);
   border-radius: var(--border-radius-lg);
@@ -163,25 +175,25 @@ main {
 }
 
 .sidebar__list--collapsed .sidebar__item:nth-child(n+21) {
-    display: none;
+  display: none;
 }
 
 .sidebar__toggle-btn {
-    width: 100%;
-    padding: 10px;
-    background-color: transparent;
-    color: var(--color-primary);
-    border: 2px solid var(--color-primary);
-    border-radius: var(--border-radius-sm);
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
+  width: 100%;
+  padding: 10px;
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+  border-radius: var(--border-radius-sm);
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .sidebar__toggle-btn:hover {
-    background-color: var(--color-primary);
-    color: var(--color-surface);
+  background-color: var(--color-primary);
+  color: var(--color-surface);
 }
 
 .sidebar__item {
@@ -191,28 +203,37 @@ main {
 
 .sidebar__button {
   display: block;
-  width: 100%; /* Obrigatório: <button> não estica sozinho como o <a> */
+  width: 100%;
+  /* Obrigatório: <button> não estica sozinho como o <a> */
   padding: 12px 16px;
-  border: none; /* Remove a borda padrão do navegador */
+  border: none;
+  /* Remove a borda padrão do navegador */
   border-radius: var(--border-radius-sm);
-  background-color: transparent; /* Remove o fundo cinza padrão */
+  background-color: transparent;
+  /* Remove o fundo cinza padrão */
   color: var(--color-heading);
-  font-family: inherit; /* Herda o Arial do body (botões não herdam por padrão) */
+  font-family: inherit;
+  /* Herda o Arial do body (botões não herdam por padrão) */
   font-size: 1rem;
   font-weight: 500;
-  text-align: left; /* Alinha o texto à esquerda (botões centralizam por padrão) */
-  cursor: pointer; /* Devolve a mãozinha ao passar o mouse */
+  text-align: left;
+  /* Alinha o texto à esquerda (botões centralizam por padrão) */
+  cursor: pointer;
+  /* Devolve a mãozinha ao passar o mouse */
   transition: background-color 0.2s ease;
 }
-.sidebar__button--active, 
+
+.sidebar__button--active,
 .sidebar__button:hover {
   background-color: var(--color-category-active);
   font-weight: bold;
 }
 
 .catalog {
-  margin-top: 12px; /* para ficar na mesma altura do Categorias*/
-  flex: 1; /* Pega todo o espaço restante da tela, ignorando porcentagens */
+  margin-top: 12px;
+  /* para ficar na mesma altura do Categorias*/
+  flex: 1;
+  /* Pega todo o espaço restante da tela, ignorando porcentagens */
 }
 
 .catalog__header {
@@ -233,14 +254,18 @@ main {
   transition: all 0.2s ease;
 
 }
+
 .catalog__sort-select:focus {
   outline: none;
-  border-color: #9e4c00; /* Um tom um pouco mais escuro para mostrar que está selecionado */
-  box-shadow: 0 0 0 2px rgba(217, 119, 6, 0.247); /* Cria um anel de foco mais suave e elegante */
+  border-color: #9e4c00;
+  /* Um tom um pouco mais escuro para mostrar que está selecionado */
+  box-shadow: 0 0 0 2px rgba(217, 119, 6, 0.247);
+  /* Cria um anel de foco mais suave e elegante */
 }
 
 .catalog__sort-select option {
-  background-color: var(--color-surface); /* Fundo clarinho das opções */
+  background-color: var(--color-surface);
+  /* Fundo clarinho das opções */
   color: var(--color-heading);
 }
 
@@ -248,8 +273,8 @@ main {
   width: 100%;
   display: grid;
   /* Cria exatas 4 colunas de tamanhos iguais. Se a tela diminuir muito, você pode usar media queries depois. */
-  grid-template-columns: repeat(4, 1fr); 
-  gap: 24px; 
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
 }
 
 .product-card {
@@ -258,15 +283,20 @@ main {
   box-shadow: var(--shadow-card);
   display: flex;
   flex-direction: column;
-  overflow: hidden; /* Essencial para a imagem não quebrar o border-radius */
-  padding-bottom: 16px; /* Respiro no fundo do card */
+  overflow: hidden;
+  /* Essencial para a imagem não quebrar o border-radius */
+  padding-bottom: 16px;
+  /* Respiro no fundo do card */
 }
 
 .product-card__image {
   width: 100%;
-  height: 220px; /* Tamanho do quadrado cinza do Figma */
-  object-fit: cover; /* Evita que a imagem distorça, ela recorta o excesso */
-  background-color: var(--color-input-background); /* Fundo cinza enquanto a imagem não carrega */
+  height: 220px;
+  /* Tamanho do quadrado cinza do Figma */
+  object-fit: cover;
+  /* Evita que a imagem distorça, ela recorta o excesso */
+  background-color: var(--color-input-background);
+  /* Fundo cinza enquanto a imagem não carrega */
   margin-bottom: 12px;
 }
 
@@ -281,8 +311,8 @@ main {
 .product-card__footer {
   display: flex;
   justify-content: space-between;
-  align-items: baseline; 
-  margin-top: auto;      
+  align-items: baseline;
+  margin-top: auto;
   margin-bottom: 0;
 }
 
@@ -307,7 +337,7 @@ main {
 
 .pagination__info {
   font-size: 18px;
-  color:  var(--color-description);
+  color: var(--color-description);
 }
 
 .pagination__list {
@@ -328,10 +358,65 @@ main {
 }
 
 .pagination__button:hover {
-  background-color: rgb(158, 76, 0); /* Cria um destaque circular sutil */
+  background-color: rgb(158, 76, 0);
+  /* Cria um destaque circular sutil */
   opacity: 0.7;
 }
 
 .pagination__btn--disabled {
   display: none;
+}
+
+/* Animação de pulso */
+@keyframes skeleton-pulse {
+
+  0%,
+  100% {
+    background-color: #EFE8DE;
+  }
+
+  50% {
+    background-color: #DFD3C3;
+  }
+}
+
+/* Classe base para qualquer bloco cinza pulsante */
+.skeleton {
+  border-radius: var(--border-radius-sm);
+  animation: skeleton-pulse 1s ease-in-out infinite;
+}
+
+/* Tamanhos simulando o conteúdo real do card */
+.skeleton--image {
+  width: 100%;
+  height: 220px;
+  border-radius: 0;
+  margin-bottom: 12px;
+}
+
+.skeleton--title {
+  height: 24px;
+  width: 75%;
+  margin: 0 16px 8px;
+}
+
+.skeleton--rating {
+  height: 18px;
+  width: 30%;
+  margin: 0 16px 8px;
+}
+
+.skeleton--description {
+  height: 54px;
+  margin: 0 16px 16px;
+}
+
+.skeleton--price {
+  height: 24px;
+  width: 40%;
+}
+
+.skeleton--unit {
+  height: 18px;
+  width: 25%;
 }

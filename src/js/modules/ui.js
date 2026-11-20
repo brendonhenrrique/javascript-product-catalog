@@ -69,6 +69,40 @@ export function createCard(produto) {
     return card;
 }
 
+function mostrarSkeletons() {
+    grid.replaceChildren();
+
+    for (let i = 0; i < estado.limite; i++) {
+        const card = document.createElement('article');
+        card.className = 'product-card';
+
+        const img = document.createElement('div');
+        img.className = 'skeleton skeleton--image';
+
+        const title = document.createElement('div');
+        title.className = 'skeleton skeleton--title';
+
+        const rating = document.createElement('div');
+        rating.className = 'skeleton skeleton--rating';
+
+        const description = document.createElement('div');
+        description.className = 'skeleton skeleton--description';
+
+        const footer = document.createElement('div');
+        footer.className = 'product-card__footer';
+
+        const price = document.createElement('div');
+        price.className = 'skeleton skeleton--price';
+
+        const unit = document.createElement('div');
+        unit.className = 'skeleton skeleton--unit';
+
+        footer.append(price, unit);
+        card.append(img, title, rating, description, footer);
+        grid.appendChild(card);
+    }
+}
+
 document.addEventListener('DOMContentLoaded', carregaPagina)
 
 const estado = {
@@ -90,6 +124,8 @@ function calcularUltimaPagina() {
 }
 
 async function carregaPagina() {
+    mostrarSkeletons(); // Desenha os 8 cards pulsando imediatamente
+    
     let dados;
 
     if (estado.categoriaAtual === 'all' && estado.busca === '') {
