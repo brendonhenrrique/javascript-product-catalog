@@ -4,7 +4,7 @@ Aplicação web de catálogo de produtos (**SPA**) feita com **HTML, CSS e JavaS
 
 Este projeto consolida meus fundamentos em JavaScript moderno (ES6+) antes da transição para **Node.js** e **React**, aplicando arquitetura modular e fluxo de interface orientado a estado.
 
-🔗 **Demo:** [Ver projeto online](https://seu-link-aqui.vercel.app/)
+🔗 **Demo:** [Ver projeto online](https://javascript-product-catalog-six.vercel.app/)
 
 | Desktop | Estado vazio (Busca) | Mobile |
 |---------|----------------------|--------|
